@@ -17,7 +17,7 @@ console.log(join(__dirname, '..', '/public/uploads'));
 
 @Module({
   imports: [
-      MongooseModule.forRoot('mongodb+srv://DASC:1907197619MMMmmm@cluster0.r53qhkl.mongodb.net/?retryWrites=true&w=majority'),
+      MongooseModule.forRoot(''),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', 'public' , 'uploads'),
           serveRoot: '/public'
