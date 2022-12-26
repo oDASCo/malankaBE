@@ -6,7 +6,7 @@ import {MongooseModule} from "@nestjs/mongoose";
 import {CatalogModule} from "./catalog/catalog.module";
 import {MulterModule} from "@nestjs/platform-express";
 import {UsersModule} from "./users/users.module";
-import {LoginModule} from "./login/login.module";
+import {AuthModule} from "./auth/auth.module";
 import {ElementModule} from "./element/element.module";
 import {ComboModule} from "./combo/combo.module";
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -17,7 +17,7 @@ console.log(join(__dirname, '..', '/public/uploads'));
 
 @Module({
   imports: [
-      MongooseModule.forRoot(process.env.MONGODB_URI),
+      MongooseModule.forRoot('mongodb+srv://DASC:1907197619MMMmmm@cluster0.r53qhkl.mongodb.net/?retryWrites=true&w=majority'),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', 'public' , 'uploads'),
           serveRoot: '/public'
@@ -25,7 +25,7 @@ console.log(join(__dirname, '..', '/public/uploads'));
       WishlistModule,
       CatalogModule,
       UsersModule,
-      LoginModule,
+      AuthModule,
       ElementModule,
       ComboModule,
       MulterModule.register({
