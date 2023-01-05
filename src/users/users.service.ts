@@ -2,7 +2,7 @@ import {Injectable} from "@nestjs/common";
 import {InjectModel, Prop} from "@nestjs/mongoose";
 import {HydratedDocument, Model} from "mongoose";
 import {ApiProperty} from "@nestjs/swagger";
-import {User} from "../schemas/user.schema";
+import {User, UserDocument} from "../schemas/user.schema";
 import * as bcrypt from 'bcrypt';
 
 export class UserType {
@@ -12,18 +12,18 @@ export class UserType {
     @ApiProperty()
     email: string;
     @ApiProperty()
-    password: string;
-    passwordHash: string;
+    password?: string;
+    passwordHash?: string;
     @ApiProperty()
-    role: string;
+    role?: string;
     @ApiProperty()
-    photo: string;
+    photo?: string;
 }
 
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectModel(User.name) private userModel: Model<UserType>) {}
+    constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
     async createUser(item: UserType): Promise<UserType> {
         const saltRounds = 10;

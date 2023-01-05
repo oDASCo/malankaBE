@@ -1,7 +1,8 @@
-import {Body, Controller, Get, HttpCode, Param, Post, Put} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Put, UploadedFile, UseInterceptors} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {UsersService, UserType} from "./users.service";
 import {User} from "../schemas/user.schema";
+import {FileInterceptor} from "@nestjs/platform-express";
 
 
 @ApiTags('User')
@@ -32,7 +33,8 @@ export class UsersController {
     @Put(':id')
     @HttpCode(200)
     async updateUser(@Param() params, @Body() userData: UserType): Promise<User> {
-        return await this.userService.updateUser(params.id, userData);
+        console.log(userData);
+        return await this.userService.updateUser(params.id, {...userData});
     }
 
 }

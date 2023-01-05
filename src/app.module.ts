@@ -12,13 +12,16 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import {ConfigModule} from "@nestjs/config";
 import {AuthModule} from "./auth/auth.module";
+import {ClassesModule} from "./classes/classes.module";
+
+console.log(process.env.MONGODB_URI);
 
 @Module({
   imports: [
-      MongooseModule.forRoot('mongodb+srv://DASC:1907197619MMMmmm@cluster0.r53qhkl.mongodb.net/?retryWrites=true&w=majority'),
+      MongooseModule.forRoot(process.env.MONGODB_URI),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', 'public' , 'uploads'),
-          serveRoot: '/public'
+          serveRoot: '/uploads'
       }),
       WishlistModule,
       CatalogModule,
@@ -26,6 +29,7 @@ import {AuthModule} from "./auth/auth.module";
       AuthModule,
       ElementModule,
       ComboModule,
+      ClassesModule,
       MulterModule.register({
           dest: './public/uploads',
       }),
