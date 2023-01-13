@@ -3,6 +3,7 @@ import {InjectModel, Prop} from "@nestjs/mongoose";
 import {HydratedDocument, Model} from "mongoose";
 import {ApiProperty} from "@nestjs/swagger";
 import {Element, ElementDocument, ElementSchema} from "../schemas/element.schema";
+import {CatalogElement} from "../schemas/catalogElement.schema";
 
 export class ElementType {
     id: string;
@@ -38,8 +39,12 @@ export class ElementService {
         return newItem.save();
     }
 
-    async findAll(): Promise<Element[]> {
-        return this.elementModel.find({});
+    async findAll(params): Promise<Element[]> {
+        return this.elementModel.find(params);
+    }
+
+    async findAllByParams(params): Promise<CatalogElement[]> {
+        return this.elementModel.find(params);
     }
 
     async findItemById(id: string): Promise<Element> {

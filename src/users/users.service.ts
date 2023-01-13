@@ -31,6 +31,7 @@ export class UsersService {
         const oldUser = await this.userModel.findOne({ username: item.username })
         delete item.password;
         if (!oldUser) {
+            console.log(passwordHash);
             const newItem = new this.userModel({...item, passwordHash});
             return newItem.save();
         } else {

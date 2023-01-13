@@ -21,7 +21,8 @@ console.log(process.env.MONGODB_URI);
       MongooseModule.forRoot(process.env.MONGODB_URI),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', 'public' , 'uploads'),
-          serveRoot: '/uploads'
+          serveRoot: '/uploads',
+          exclude: ['/api*'],
       }),
       WishlistModule,
       CatalogModule,

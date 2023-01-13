@@ -33,8 +33,7 @@ export class UsersController {
     @Put(':id')
     @HttpCode(200)
     async updateUser(@Param() params, @Body() userData: UserType): Promise<User> {
-        console.log(userData);
-        return await this.userService.updateUser(params.id, {...userData});
+        return await this.userService.updateUser(params.id, userData);
     }
 
 }

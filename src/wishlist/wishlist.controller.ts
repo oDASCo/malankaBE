@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Query} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {WishlistService, WishlistType} from "./wishlist.service";
 
@@ -12,8 +12,8 @@ export class WishlistController {
 
     @Get()
     @HttpCode(200)
-    async getWishlist(): Promise<WishlistType[]> {
-        return await this.wishlistService.findAll();
+    async getWishlist(@Query() query): Promise<WishlistType[]> {
+        return await this.wishlistService.findAll(query);
     }
 
     @Post()

@@ -27,8 +27,8 @@ export class ClassesService {
         return newItem.save();
     }
 
-    async findAll(): Promise<Classes[]> {
-        return this.classesModel.find({});
+    async findAll(params): Promise<Classes[]> {
+        return this.classesModel.find(params);
     }
 
     async findItemById(id: string): Promise<Classes> {

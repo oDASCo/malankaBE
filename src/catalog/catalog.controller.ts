@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post, UploadedFile, UseInterceptors} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Query, UploadedFile, UseInterceptors} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {CatalogElementType, CatalogService} from "./catalog.service";
 import {FileInterceptor} from "@nestjs/platform-express";
@@ -13,20 +13,14 @@ export class CatalogController {
 
     @Get()
     @HttpCode(200)
-    async getCatalog(): Promise<CatalogElementType[]> {
-        return await this.catalogService.findAll();
+    async getCatalog(@Query() query): Promise<CatalogElementType[]> {
+       return await this.catalogService.findAllByParams(query);
     }
 
     @Post('')
-    @UseInterceptors(FileInterceptor('file'))
-    async uploadFile(@UploadedFile() file: Express.Multer.File, @Body() catalogItem: CatalogElementType) {
-        return await this.catalogService.addToCatalog({...catalogItem, photo: '/uploads/' + file.filename});
-    }
-
-    @Post('upload-video')
-    @UseInterceptors(FileInterceptor('file'))
-    async uploadVideo(@UploadedFile() file: Express.Multer.File, @Body() catalogItem: CatalogElementType) {
-        return await this.catalogService.updateCatalogElement({...catalogItem, video: '/uploads/' + file.filename});
+    @UseInterceptors()
+    async addCatalogItem(@Body() catalogItem: CatalogElementType) {
+        return await this.catalogService.addToCatalog(catalogItem);
     }
 
     @Get(':id')

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Query} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {ClassesService, ClassesType} from "./classes.service";
 
@@ -12,8 +12,8 @@ export class ClassesController {
 
     @Get()
     @HttpCode(200)
-    async getClasses(): Promise<ClassesType[]> {
-        return await this.classesService.findAll();
+    async getClasses(@Query() query): Promise<ClassesType[]> {
+        return await this.classesService.findAll(query);
     }
 
     @Post()

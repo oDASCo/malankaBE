@@ -33,9 +33,14 @@ export class CatalogService {
         return newItem.save();
     }
 
-    async findAll(): Promise<CatalogElement[]> {
-        return this.catalogModel.find({});
+    // async findAll(): Promise<CatalogElement[]> {
+    //     return this.catalogModel.find({});
+    // }
+
+    async findAllByParams(params): Promise<CatalogElement[]> {
+        return this.catalogModel.find(params);
     }
+
 
     async updateCatalogElement(item: CatalogElementType): Promise<CatalogElement> {
         return this.catalogModel.findByIdAndUpdate(item.id, item, { new: true });

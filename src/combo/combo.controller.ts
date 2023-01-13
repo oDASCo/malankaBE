@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Query} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {ComboService, ComboType} from "./combo.service";
 
@@ -12,8 +12,8 @@ export class ComboController {
 
     @Get()
     @HttpCode(200)
-    async getElements(): Promise<ComboType[]> {
-        return await this.comboService.findAll();
+    async getElements(@Query() query): Promise<ComboType[]> {
+        return await this.comboService.findAll(query);
     }
 
     @Post()

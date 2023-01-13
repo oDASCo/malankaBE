@@ -27,8 +27,8 @@ export class ComboService {
         return newItem.save();
     }
 
-    async findAll(): Promise<Combo[]> {
-        return this.comboModel.find({});
+    async findAll(params): Promise<Combo[]> {
+        return this.comboModel.find(params);
     }
 
     async findItemById(id: string): Promise<Combo> {

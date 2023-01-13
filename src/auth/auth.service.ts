@@ -17,21 +17,39 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<any> {
     console.log('validate  user');
     const user = await this.userModel.findOne({ username })
-    const passwordCorrect = user === null
-        ? false
-        : await bcrypt.compare(pass, user.passwordHash)
-    console.log(passwordCorrect);
+    console.log(pass);
+    console.log(user.passwordHash);
+
+
+
+    let passwordCorrect =  bcrypt.compareSync(pass, user.passwordHash);
     if (user && passwordCorrect) {
       const { password, ...result } = user;
       return result;
+    } else {
+      return null;
     }
-    return null;
+
+    // await bcrypt.compare(pass, user.passwordHash,  function(res, err) {
+    //   console.log('passwordCorrect: ' + res);
+    //   if (user && res) {
+    //     const { password, ...result } = user;
+    //     return result;
+    //   } else {
+    //     return null;
+    //   }
+    // });
+
+
   }
 
   async login(user: any) {
     console.log(user);
     const payload = { username: user.username, sub: user.id };
+    let userForSave = {...user._doc, id: user._doc._id};
+    delete userForSave.passwordHash;
     return {
+      ...userForSave,
       access_token: this.jwtService.sign(payload),
     };
   }

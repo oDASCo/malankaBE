@@ -34,8 +34,8 @@ export class WishlistService {
         return newItem.save();
     }
 
-    async findAll(): Promise<WishlistElement[]> {
-        return this.wishlistModel.find({});
+    async findAll(params): Promise<WishlistElement[]> {
+        return this.wishlistModel.find(params);
     }
 
     async findItemById(id: string): Promise<WishlistElement> {
