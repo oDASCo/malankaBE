@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   HttpCode,
   HttpStatus, Post, Request,
@@ -6,6 +7,16 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {AuthGuard} from "@nestjs/passport";
+import {UserType} from "../users/users.service";
+import {ApiProperty} from "@nestjs/swagger";
+
+export class LoginType  {
+  @ApiProperty()
+  username: string;
+  @ApiProperty()
+  password?: string;
+};
+
 
 @Controller('api/auth')
 export class AuthController {
@@ -14,9 +25,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req) {
-    console.log(123);
-    console.log(req.user);
+  async login(@Request() req, @Body() userData: LoginType) {
     return this.authService.login(req.user);
   }
 
