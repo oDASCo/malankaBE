@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post, Query, UploadedFile, UseInterceptors} from "@nestjs/common";
+import {Body, Controller, Get, HttpCode, Param, Post, Put, Query, UploadedFile, UseInterceptors} from "@nestjs/common";
 import {ApiProperty, ApiTags} from "@nestjs/swagger";
 import {CatalogElementType, CatalogService} from "./catalog.service";
 import {FileInterceptor} from "@nestjs/platform-express";
@@ -21,6 +21,12 @@ export class CatalogController {
     @UseInterceptors()
     async addCatalogItem(@Body() catalogItem: CatalogElementType) {
         return await this.catalogService.addToCatalog(catalogItem);
+    }
+
+    @Put('')
+    @UseInterceptors()
+    async editCatalogItem(@Body() catalogItem: CatalogElementType) {
+        return await this.catalogService.updateCatalogElement(catalogItem);
     }
 
     @Get(':id')

@@ -10,7 +10,7 @@ export class CatalogElementType {
     @ApiProperty()
     name: string;
     @ApiProperty()
-    desc: string;
+    desc: Array<string>;
     @ApiProperty()
     category: string;
     @ApiProperty()
@@ -43,10 +43,12 @@ export class CatalogService {
 
 
     async updateCatalogElement(item: CatalogElementType): Promise<CatalogElement> {
+        console.log(item);
         return this.catalogModel.findByIdAndUpdate(item.id, item, { new: true });
     }
 
     async findItemById(id: string): Promise<CatalogElement> {
         return this.catalogModel.findById(id);
     }
+
 }

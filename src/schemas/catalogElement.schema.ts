@@ -10,7 +10,7 @@ export class CatalogElement {
     @Prop()
     name: string;
     @Prop()
-    desc: string;
+    desc: Array<string>;
     @Prop()
     category: string;
     @Prop()

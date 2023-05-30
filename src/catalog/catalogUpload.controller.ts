@@ -27,7 +27,7 @@ const fileOptions = {
         },
     }),
     fileFilter: function fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|avi|mov|MOV)$/)) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|avi|mov|MOV|ogg)$/)) {
             return cb(new Error('Only image files are allowed!'), false);
         }
         return cb(null, true);

@@ -15,7 +15,7 @@ import {User, UserSchema} from "../schemas/user.schema";
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: process.env.SECRET,
+      secret: 'qwertyy',
       signOptions: { expiresIn: '1h' },
     }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
