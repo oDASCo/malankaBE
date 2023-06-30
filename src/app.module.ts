@@ -27,6 +27,7 @@ console.log(process.env.MONGODB_URI);
       // }),
       ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', 'malanka-fe'),   // <-- path to the static files
+          exclude: ['/api*'],
       }),
       WishlistModule,
       CatalogModule,
