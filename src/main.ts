@@ -2,13 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
+import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //app.use(helmet());
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
   app.enableCors()
-  // app.all("/", (req,res) => { res.sendFile("index.html") })
+  app.use('/', express.static('malanka-fe/index.html'));
 
   const config = new DocumentBuilder()
       .setTitle('Malanka BE')
