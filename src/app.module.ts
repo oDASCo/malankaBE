@@ -13,7 +13,6 @@ import { join } from 'path';
 import {ConfigModule} from "@nestjs/config";
 import {AuthModule} from "./auth/auth.module";
 import {ClassesModule} from "./classes/classes.module";
-import {DefaultModule} from "./default/default.module";
 
 console.log(process.env.MONGODB_URI);
 
