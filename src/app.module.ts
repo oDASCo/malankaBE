@@ -20,10 +20,13 @@ console.log(process.env.MONGODB_URI);
 @Module({
   imports: [
       MongooseModule.forRoot('mongodb+srv://DASC:1907197619MMMmmm@cluster0.r53qhkl.mongodb.net/?retryWrites=true&w=majority'),
+      // ServeStaticModule.forRoot({
+      //     rootPath: join(__dirname, '..', 'public' , 'uploads'),
+      //     serveRoot: '/uploads',
+      //     exclude: ['/api*'],
+      // }),
       ServeStaticModule.forRoot({
-          rootPath: join(__dirname, '..', 'public' , 'uploads'),
-          serveRoot: '/uploads',
-          exclude: ['/api*'],
+          rootPath: join(__dirname, '..', 'malanka-fe'),   // <-- path to the static files
       }),
       WishlistModule,
       CatalogModule,
