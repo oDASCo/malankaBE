@@ -18,6 +18,9 @@ export class UserType {
     role?: string;
     @ApiProperty()
     photo?: string;
+    provider?: string;
+    name?: string;
+    picture?: string;
 }
 
 
@@ -41,14 +44,17 @@ export class UsersService {
     }
 
     async findAll(): Promise<User[]> {
-        return this.userModel.find({});
+        return await this.userModel.find({});
     }
 
-    async findItemById(id: string): Promise<User> {
-        return this.userModel.findById(id);
+    async findItemBy(param: any): Promise<User> {
+        let founded = await this.userModel.find(param);
+        console.log(founded);
+        return founded[0];
+        //return await this.userModel.find({param});
     }
 
     async updateUser(id: string, data: UserType): Promise<User> {
-        return this.userModel.findByIdAndUpdate(id, data, { new: true })
+        return await this.userModel.findByIdAndUpdate(id, data, { new: true })
     }
 }

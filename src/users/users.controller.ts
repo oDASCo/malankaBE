@@ -24,10 +24,10 @@ export class UsersController {
         return await this.userService.createUser(userData);
     }
 
-    @Get(':id')
+    @Get(':username')
     @HttpCode(200)
     async findOne(@Param() params): Promise<User> {
-        return await this.userService.findItemById(params.id);
+        return await this.userService.findItemBy(params);
     }
 
     @Put(':id')

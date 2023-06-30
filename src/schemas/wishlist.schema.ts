@@ -12,7 +12,7 @@ export class WishlistElement {
     @Prop()
     name: string;
     @Prop()
-    desc: string;
+    desc: Array<string>;
     @Prop()
     category: string;
     @Prop()

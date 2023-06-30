@@ -11,7 +11,7 @@ export class WishlistType {
     @ApiProperty()
     name: string;
     @ApiProperty()
-    desc: string;
+    desc: Array<string>;
     @ApiProperty()
     category: string;
     @ApiProperty()

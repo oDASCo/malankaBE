@@ -29,6 +29,8 @@ export class CatalogService {
     constructor(@InjectModel(CatalogElement.name) private catalogModel: Model<CatalogElementDocument>) {}
 
     async addToCatalog(item: CatalogElementType): Promise<CatalogElement> {
+        console.log(item);
+        let descArr = item.desc[0].split(',');
         const newItem = new this.catalogModel(item);
         return newItem.save();
     }
@@ -43,7 +45,6 @@ export class CatalogService {
 
 
     async updateCatalogElement(item: CatalogElementType): Promise<CatalogElement> {
-        console.log(item);
         return this.catalogModel.findByIdAndUpdate(item.id, item, { new: true });
     }
 

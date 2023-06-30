@@ -12,7 +12,7 @@ export class ElementType {
     @ApiProperty()
     name: string;
     @ApiProperty()
-    desc: string;
+    desc: Array<string>;
     @ApiProperty()
     category: string;
     @ApiProperty()
@@ -35,6 +35,7 @@ export class ElementService {
     constructor(@InjectModel(Element.name) private elementModel: Model<ElementDocument>) {}
 
     async addElementt(item: ElementType): Promise<Element> {
+
         const newItem = new this.elementModel(item);
         return newItem.save();
     }

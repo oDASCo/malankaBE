@@ -12,7 +12,7 @@ export class Element {
     @Prop()
     name: string;
     @Prop()
-    desc: string;
+    desc: Array<string>;
     @Prop()
     category: string;
     @Prop()

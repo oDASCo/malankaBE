@@ -13,6 +13,8 @@ export class ElementController {
     @Get()
     @HttpCode(200)
     async getElements(@Query() query): Promise<ElementType[]> {
+        console.log('wertrt');
+        console.log(query);
         return await this.elementService.findAll(query);
     }
 
