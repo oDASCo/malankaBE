@@ -31,6 +31,7 @@ console.log(process.env.MONGODB_URI);
       ElementModule,
       ComboModule,
       ClassesModule,
+      DefaultModule,
       MulterModule.register({
           dest: './public/uploads',
       }),
