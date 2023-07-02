@@ -9,7 +9,6 @@ export class ClassesController {
 
     constructor(private classesService: ClassesService) {
     }
-
     @Get()
     @HttpCode(200)
     async getClasses(@Query() query): Promise<ClassesType[]> {
