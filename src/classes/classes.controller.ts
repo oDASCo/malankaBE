@@ -27,4 +27,5 @@ export class ClassesController {
     async findOne(@Param() params): Promise<ClassesType> {
         return await this.classesService.findItemById(params.id);
     }
+
 }
