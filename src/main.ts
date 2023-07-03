@@ -7,9 +7,10 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //app.use(helmet());
-  app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
+  app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" }, contentSecurityPolicy: {directives: {defaultSrc: "self"}} }));
+
   app.enableCors()
-  app.use('/', express.static('../dist/malanka-fe'));
+  //app.use('/', express.static('../dist/malanka-fe'));
 
   const config = new DocumentBuilder()
       .setTitle('Malanka BE')
