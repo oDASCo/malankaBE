@@ -13,6 +13,8 @@ async function bootstrap() {
   app.enableCors()
   //app.use('/', express.static('../dist/malanka-fe'));
 
+
+
   const config = new DocumentBuilder()
       .setTitle('Malanka BE')
       .setDescription('Malanka BE API description')
