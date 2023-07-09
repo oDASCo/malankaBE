@@ -14,7 +14,6 @@ async function bootstrap() {
   //app.use('/', express.static('../dist/malanka-fe'));
 
 
-
   const config = new DocumentBuilder()
       .setTitle('Malanka BE')
       .setDescription('Malanka BE API description')
