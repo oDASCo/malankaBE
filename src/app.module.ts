@@ -30,12 +30,6 @@ console.log(process.env.MONGODB_URI);
           rootPath: join(__dirname, '..', 'malanka-fe'),   // <-- path to the static files
           exclude: ['/api*'],
       },
-//           {
-//
-//             rootPath: join(__dirname, '..', 'public' , 'uploads'),
-//             serveRoot: '/uploads',
-//            exclude: ['/api*'],
-// }
 ),
       WishlistModule,
       CatalogModule,
