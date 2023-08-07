@@ -10,7 +10,6 @@ export class CatalogController {
 
     constructor(private catalogService: CatalogService) {
     }
-
     @Get()
     @HttpCode(200)
     async getCatalog(@Query() query): Promise<CatalogElementType[]> {
