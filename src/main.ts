@@ -10,8 +10,9 @@ async function bootstrap() {
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" }, contentSecurityPolicy: false }));
 
 
+
   app.enableCors()
-  //app.use('/', express.static('../dist/malanka-fe'));
+  app.use('/', express.static('../dist/malanka-fe'));
 
   const config = new DocumentBuilder()
       .setTitle('Malanka BE')
