@@ -23,7 +23,6 @@ export class CatalogElementType {
     createdBy: string;
 }
 
-
 @Injectable()
 export class CatalogService {
     constructor(@InjectModel(CatalogElement.name) private catalogModel: Model<CatalogElementDocument>) {}
