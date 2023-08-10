@@ -9,8 +9,6 @@ async function bootstrap() {
   //app.use(helmet());
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" }, contentSecurityPolicy: false }));
 
-
-
   app.enableCors()
   app.use('/', express.static('../dist/malanka-fe'));
 
